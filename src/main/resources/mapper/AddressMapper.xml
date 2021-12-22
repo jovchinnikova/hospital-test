@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.hospitaltest.persistence.AddressRepository">
+    <insert id="create" keyProperty="id" useGeneratedKeys="true">
+        insert into Addresses (city,street,building_number) values (#{city},#{street},#{buildingNumber})
+    </insert>
+
+    <select id="findById" resultMap="AddressResultMap">
+        select a.id, a.city, a.street, a.building_number from Addresses a left join Hospitals h
+        on a.id = h.address_id where h.id = #{hospitalId}
+    </select>
+
+    <resultMap id="AddressResultMap" type="com.solvd.hospitaltest.domain.Address">
+        <id property="id" column="id"/>
+        <result property="city" column="city"/>
+        <result property="street" column="street"/>
+        <result property="buildingNumber" column="building_number"/>
+    </resultMap>
+</mapper>

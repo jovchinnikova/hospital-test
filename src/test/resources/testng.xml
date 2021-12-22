@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite">
+    <groups>
+        <run>
+            <include name="findTests"/>
+        </run>
+    </groups>
+    <test name="test">
+        <classes>
+            <class name="com.solvd.hospitaltest.AddressTest"/>
+            <class name="com.solvd.hospitaltest.WardTest">
+                <methods>
+                    <include name="createTest"/>
+                    <include name="findById"/>
+                </methods>
+            </class>
+            <class name="com.solvd.hospitaltest.SupplierTest">
+                <methods>
+                    <include name="findByNameTest"/>
+                    <include name="updateTest"/>
+                    <include name="deleteTest"/>
+                    <include name="create"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
